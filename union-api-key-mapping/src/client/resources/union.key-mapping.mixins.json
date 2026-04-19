@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.union.mixin.client.keymapping",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "KeyMappingAccessor",
+    "KeyMappingCategoryMixin",
+    "OptionsMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

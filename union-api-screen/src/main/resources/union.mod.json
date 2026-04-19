@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "union_api_screen",
+  "version": "1.1.0",
+  "name": "Union API — Screen",
+  "description": "Client-side screen lifecycle events (init, render, remove) and per-screen widget access.",
+  "environment": "client",
+  "depends": {
+    "union": "*",
+    "union_api_base": "*",
+    "union_api_event": "*"
+  }
+}

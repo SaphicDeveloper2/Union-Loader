@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "union_api_registry",
+  "version": "1.1.0",
+  "name": "Union API — Registry",
+  "description": "NeoForge-style DeferredRegister + RegistryObject for Minecraft registries.",
+  "environment": "*",
+  "depends": {
+    "union": "*",
+    "union_api_base": "*",
+    "union_api_event": "*"
+  }
+}

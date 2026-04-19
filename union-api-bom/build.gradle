@@ -1,0 +1,34 @@
+// Union API Bill-of-Materials.
+//
+// Lets consumer mods import the whole Union API surface without pinning every sub-module's
+// version individually. Consumer build:
+//
+//     implementation platform('dev.union:union-api-bom:1.0.0')
+//     implementation 'dev.union:union-api-event'
+//     implementation 'dev.union:union-api-registry'
+//     // ... versions inherited from the BOM.
+//
+// This module produces no jar — just a published pom constraint set.
+
+plugins {
+	id 'java-platform'
+}
+
+dependencies {
+	constraints {
+		api project(':union-api-base')
+		api project(':union-api-event')
+		api project(':union-api-registry')
+		api project(':union-api-lifecycle')
+		api project(':union-api-network')
+		api project(':union-api-attachment')
+		api project(':union-api-screen')
+		api project(':union-api-keybind')
+		api project(':union-api-resource')
+	}
+}
+
+// The root build.gradle applies `java` to all subprojects via `allprojects`; java-platform
+// needs us to remove that to avoid a plugin collision. Conservatively, disable any `jar`
+// task this subproject inherited.
+tasks.matching { it.name == 'jar' || it.name == 'sourcesJar' }.configureEach { enabled = false }

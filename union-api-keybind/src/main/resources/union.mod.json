@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "union_api_keybind",
+  "version": "1.1.0",
+  "name": "Union API — Keybind",
+  "description": "Client-side key-mapping registration helper.",
+  "environment": "client",
+  "depends": {
+    "union": "*",
+    "union_api_base": "*",
+    "union_api_event": "*"
+  }
+}

@@ -1,0 +1,14 @@
+dependencies {
+	compileOnly project(':union-loader')
+	api         project(':union-api-base')
+}
+
+jar {
+	manifest {
+		attributes(
+				'Implementation-Title'  : 'Union API Event',
+				'Implementation-Version': project.version
+		)
+	}
+	archiveBaseName.set('union-api-event')
+}

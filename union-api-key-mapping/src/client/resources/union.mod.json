@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "union_api_key_mapping",
+  "version": "1.0.0",
+  "name": "Union API — Key Mapping",
+  "description": "Client-side API for registering custom keybindings with proper category sorting. Replaces the usage of the internal-only Keybinds pending-queue with a full-featured Fabric-compatible KeyMappingHelper.",
+  "environment": "client",
+  "license": "Apache-2.0",
+  "authors": ["UnionMC", "FabricMC (original)"],
+  "depends": {
+    "union": "*"
+  },
+  "mixins": [
+    "union.key-mapping.mixins.json"
+  ]
+}

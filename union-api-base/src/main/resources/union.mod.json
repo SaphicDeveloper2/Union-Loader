@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "union_api_base",
+  "version": "1.1.0",
+  "name": "Union API — Base",
+  "description": "Shared primitives for all Union API modules: identifiers, results, cross-module registry.",
+  "environment": "*",
+  "depends": {
+    "union": "*"
+  }
+}

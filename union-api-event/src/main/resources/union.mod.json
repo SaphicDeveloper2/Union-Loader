@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "union_api_event",
+  "version": "1.2.0",
+  "name": "Union API — Event Bus",
+  "description": "NeoForge-style event dispatcher with Cancelable/HasResult semantics and Fabric-style phase ordering.",
+  "environment": "*",
+  "depends": {
+    "union": "*",
+    "union_api_base": "*"
+  }
+}

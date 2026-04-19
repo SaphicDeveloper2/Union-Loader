@@ -1,0 +1,33 @@
+dependencies {
+	// The loader source is used only for the embedded JAR copy; no compile-time linkage.
+}
+
+def loaderProject = project(':union-loader')
+evaluationDependsOn(':union-loader')
+
+/**
+ * Copy the built union-loader JAR into this module's resources before Jar runs, so the
+ * installer carries the loader embedded at {@code /union-loader.jar}.
+ */
+tasks.register('embedLoader', Copy) {
+	dependsOn loaderProject.tasks.named('jar')
+	from(loaderProject.tasks.named('jar').map { it.archiveFile })
+	into layout.buildDirectory.dir('embedded-resources')
+	rename { 'union-loader.jar' }
+}
+
+processResources {
+	dependsOn tasks.named('embedLoader')
+	from(layout.buildDirectory.dir('embedded-resources'))
+}
+
+jar {
+	manifest {
+		attributes(
+				'Implementation-Title'  : 'Union Installer',
+				'Implementation-Version': project.version,
+				'Main-Class'            : 'dev.union.installer.Main'
+		)
+	}
+	archiveBaseName.set('union-installer')
+}

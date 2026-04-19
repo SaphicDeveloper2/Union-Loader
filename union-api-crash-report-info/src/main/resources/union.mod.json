@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "union_api_crash_report_info",
+  "version": "1.0.0",
+  "name": "Union API — Crash Report Info",
+  "description": "Adds a mod listing and full thread dumps to Minecraft's system crash reports.",
+  "environment": "*",
+  "license": "Apache-2.0",
+  "authors": ["UnionMC", "FabricMC (original)"],
+  "depends": {
+    "union": "*"
+  },
+  "mixins": [
+    "union.crash-report-info.mixins.json"
+  ]
+}

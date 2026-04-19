@@ -1,0 +1,62 @@
+// union-api is an uber-jar that bundles all six Union API modules via our Jar-in-Jar system.
+//
+// It carries no classes of its own — just a union.mod.json + nested jars under META-INF/jars/.
+// The loader treats it as any ordinary JiJ parent mod: extracts each nested jar, and each one
+// registers as a proper Union mod in its own right (id, version, deps all preserved).
+//
+// This module is designed to be embedded inside union-loader's jar so it loads automatically
+// at boot without the user dropping anything in mods/. The loader extracts it to
+// <gameDir>/.cache/union/builtin/ and scans that folder alongside mods/.
+
+plugins {
+	id 'base'
+}
+
+// Collect all API jars (depend on their assemble tasks)
+def apiModules = [
+		':union-api-base',
+		':union-api-event',
+		':union-api-registry',
+		':union-api-lifecycle',
+		':union-api-network',
+		':union-api-attachment',
+		':union-api-screen',
+		':union-api-keybind',
+		':union-api-resource'
+]
+
+configurations {
+	apiJars
+}
+
+dependencies {
+	apiModules.each { apiJars project(it) }
+}
+
+task buildUberJar(type: Jar) {
+	archiveBaseName.set('union-api')
+	archiveVersion.set(project.version)
+
+	// Drop nested jars under META-INF/jars/
+	apiModules.each { modPath ->
+		def mod = project(modPath)
+		dependsOn mod.tasks.named('jar')
+		from(mod.tasks.named('jar').flatMap { it.archiveFile }) {
+			into 'META-INF/jars'
+			rename { it }
+		}
+	}
+
+	from(file('src/main/resources')) {
+		include 'union.mod.json'
+	}
+
+	manifest {
+		attributes(
+				'Implementation-Title'  : 'Union API (combined)',
+				'Implementation-Version': project.version
+		)
+	}
+}
+
+assemble.dependsOn buildUberJar

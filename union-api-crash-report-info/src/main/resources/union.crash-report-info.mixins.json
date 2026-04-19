@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.union.mixin.crash.report.info",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ServerWatchdogMixin",
+    "SystemReportMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

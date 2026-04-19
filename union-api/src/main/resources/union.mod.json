@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "union_api",
+  "version": "1.1.0",
+  "name": "Union API (combined)",
+  "description": "Bundle of all Union API modules: base, event, registry, lifecycle, network, attachment, screen, keybind, resource. Loads each as a nested Union mod via JiJ so mods can depend on individual ids (union_api_event, etc.).",
+  "environment": "*",
+  "depends": {
+    "union": "*"
+  },
+  "jars": [
+    "META-INF/jars/union-api-base-1.1.0.jar",
+    "META-INF/jars/union-api-event-1.1.0.jar",
+    "META-INF/jars/union-api-registry-1.1.0.jar",
+    "META-INF/jars/union-api-lifecycle-1.1.0.jar",
+    "META-INF/jars/union-api-network-1.1.0.jar",
+    "META-INF/jars/union-api-attachment-1.1.0.jar",
+    "META-INF/jars/union-api-screen-1.1.0.jar",
+    "META-INF/jars/union-api-keybind-1.1.0.jar",
+    "META-INF/jars/union-api-resource-1.1.0.jar"
+  ]
+}

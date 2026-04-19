@@ -1,0 +1,15 @@
+dependencies {
+	compileOnly project(':union-loader')
+	api         project(':union-api-base')
+	api         project(':union-api-event')
+}
+
+jar {
+	manifest {
+		attributes(
+				'Implementation-Title'  : 'Union API Screen',
+				'Implementation-Version': project.version
+		)
+	}
+	archiveBaseName.set('union-api-screen')
+}
